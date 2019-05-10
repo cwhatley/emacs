@@ -2735,7 +2735,7 @@ macfont_encode_char (struct font *font, int c)
 }
 
 static void
-macfont_text_extents (struct font *font, unsigned int *code, int nglyphs,
+macfont_text_extents (struct font *font, const unsigned int *code, int nglyphs,
                       struct font_metrics *metrics)
 {
   int width, i;

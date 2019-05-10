@@ -1349,7 +1349,7 @@ static void
 w32_draw_glyphless_glyph_string_foreground (struct glyph_string *s)
 {
   struct glyph *glyph = s->first_glyph;
-  XChar2b char2b[8];
+  unsigned short char2b[8];
   int x, i, j;
   bool with_background;
 
@@ -1406,16 +1406,12 @@ w32_draw_glyphless_glyph_string_foreground (struct glyph_string *s)
 	{
 	  struct font *font = s->font;
 	  int upper_len = (len + 1) / 2;
-	  unsigned code;
 	  HFONT old_font;
 
 	  old_font = SelectObject (s->hdc, FONT_HANDLE (font));
 	  /* It is certain that all LEN characters in STR are ASCII.  */
 	  for (j = 0; j < len; j++)
-	    {
-	      code = font->driver->encode_char (font, str[j]);
-	      STORE_XCHAR2B (char2b + j, code >> 8, code & 0xFF);
-	    }
+            char2b[j] = font->driver->encode_char (font, str[j]) & 0xFFFF;
 	  font->driver->draw (s, 0, upper_len,
 			      x + glyph->slice.glyphless.upper_xoff,
 			      s->ybase + glyph->slice.glyphless.upper_yoff,
