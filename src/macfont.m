@@ -1639,7 +1639,7 @@ static Lisp_Object macfont_open (struct frame *, Lisp_Object, int);
 static void macfont_close (struct font *);
 static int macfont_has_char (Lisp_Object, int);
 static unsigned macfont_encode_char (struct font *, int);
-static void macfont_text_extents (struct font *, unsigned int *, int,
+static void macfont_text_extents (struct font *, const unsigned int *, int,
                                   struct font_metrics *);
 static int macfont_draw (struct glyph_string *, int, int, int, int, bool);
 static Lisp_Object macfont_shape (Lisp_Object);
