@@ -1620,8 +1620,11 @@ struct face
 
   /* If non-zero, this is a GC that we can use without modification for
      drawing the characters in this face.  */
+# ifdef HAVE_X_WINDOWS
   GC gc;
-
+# else
+  Emacs_GC *gc;
+# endif
   /* Background stipple or bitmap used for this face.  This is
      an id as returned from load_pixmap.  */
   ptrdiff_t stipple;
