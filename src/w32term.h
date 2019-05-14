@@ -368,7 +368,7 @@ struct w32_output
   unsigned hourglass_p : 1;
 
   /* Non-hourglass cursor that is currently active.  */
-  Cursor current_cursor;
+  HCURSOR current_cursor;
 
   DWORD dwStyle;
 
