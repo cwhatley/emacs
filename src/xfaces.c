@@ -539,7 +539,7 @@ x_free_gc (struct frame *f, Emacs_GC *gc)
 #ifdef HAVE_NS
 /* NS emulation of GCs */
 
-static GC
+static Emacs_GC *
 x_create_gc (struct frame *f,
 	     unsigned long mask,
 	     Emacs_GC *egc)
